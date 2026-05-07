@@ -1,9 +1,9 @@
-package br.com.care_appointment_hub.application.usecases.impl;
+package br.com.care_appointment_hub.application.usecases.appointments.impl;
 
 import br.com.care_appointment_hub.application.dto.AppointmentResponseDTO;
 import br.com.care_appointment_hub.application.dto.UpdateAppointmentRequestDTO;
 import br.com.care_appointment_hub.application.mapper.AppointmentMapper;
-import br.com.care_appointment_hub.application.usecases.UpdateAppointmentUseCase;
+import br.com.care_appointment_hub.application.usecases.appointments.UpdateAppointmentUseCase;
 import br.com.care_appointment_hub.domain.exception.BusinessRuleException;
 import br.com.care_appointment_hub.domain.model.Appointment;
 import br.com.care_appointment_hub.domain.repository.AppointmentRepository;

@@ -3,7 +3,7 @@ package br.com.care_appointment_hub.infra.controller;
 import br.com.care_appointment_hub.application.dto.AppointmentResponseDTO;
 import br.com.care_appointment_hub.application.dto.CreateAppointmentRequestDTO;
 import br.com.care_appointment_hub.application.dto.UpdateAppointmentRequestDTO;
-import br.com.care_appointment_hub.application.usecases.*;
+import br.com.care_appointment_hub.application.usecases.appointments.*;
 import br.com.care_appointment_hub.domain.exception.BusinessRuleException;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -50,7 +50,7 @@ public class AppointmentController {
     }
 
     @GetMapping
-    public ResponseEntity<List<AppointmentResponseDTO>> listAll(@RequestParam int page, @RequestParam int size){
+    public ResponseEntity<List<AppointmentResponseDTO>> listAll(@RequestParam int page, @RequestParam int size) throws BusinessRuleException {
         return ResponseEntity.ok(listUseCase.execute(page, size));
     }
 

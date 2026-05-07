@@ -3,7 +3,6 @@ package br.com.care_appointment_hub.domain.model;
 import br.com.care_appointment_hub.domain.enums.AppointmentStatus;
 import br.com.care_appointment_hub.domain.exception.BusinessRuleException;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
 public class Appointment {

@@ -43,4 +43,14 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
                 .map(mapper::toDomain)
                 .toList();
     }
+
+    @Override
+    public List<Appointment> findByPatientId(Long patientId, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+
+        return repository.findByPatientId(patientId, pageable)
+                .stream()
+                .map(mapper::toDomain)
+                .toList();
+    }
 }

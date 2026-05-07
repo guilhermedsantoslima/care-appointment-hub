@@ -9,4 +9,5 @@ public interface AppointmentRepository {
     Appointment save(Appointment appointment);
     Optional<Appointment> findById(Long id);
     List<Appointment> findAll(int page, int size);
+    List<Appointment> findByPatientId(Long patientId, int page, int size);
 }

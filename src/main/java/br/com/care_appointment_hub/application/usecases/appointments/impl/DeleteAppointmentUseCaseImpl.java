@@ -1,6 +1,6 @@
-package br.com.care_appointment_hub.application.usecases.impl;
+package br.com.care_appointment_hub.application.usecases.appointments.impl;
 
-import br.com.care_appointment_hub.application.usecases.DeleteAppointmentUseCase;
+import br.com.care_appointment_hub.application.usecases.appointments.DeleteAppointmentUseCase;
 import br.com.care_appointment_hub.domain.enums.AppointmentStatus;
 import br.com.care_appointment_hub.domain.exception.BusinessRuleException;
 import br.com.care_appointment_hub.domain.model.Appointment;
