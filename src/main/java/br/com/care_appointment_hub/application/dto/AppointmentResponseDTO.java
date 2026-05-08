@@ -1,10 +1,14 @@
 package br.com.care_appointment_hub.application.dto;
 
+import br.com.care_appointment_hub.domain.enums.AppointmentStatus;
+
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 public record AppointmentResponseDTO(Long id,
                                      Long patientId,
                                      Long doctorId,
-                                     LocalDateTime date,
-                                     String description) {
+                                     OffsetDateTime date,
+                                     String description,
+                                     AppointmentStatus status) {
 }

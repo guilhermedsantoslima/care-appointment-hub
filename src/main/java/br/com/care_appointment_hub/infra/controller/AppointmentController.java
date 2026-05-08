@@ -32,7 +32,7 @@ public class AppointmentController {
     }
 
     @PostMapping
-    public ResponseEntity<AppointmentResponseDTO> create(@RequestBody @Valid CreateAppointmentRequestDTO request){
+    public ResponseEntity<AppointmentResponseDTO> create(@RequestBody @Valid CreateAppointmentRequestDTO request) throws BusinessRuleException {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(createUseCase.execute(request));
     }

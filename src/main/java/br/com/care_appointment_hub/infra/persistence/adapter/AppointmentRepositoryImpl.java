@@ -8,6 +8,8 @@ import br.com.care_appointment_hub.infra.persistence.repository.AppointmentJpaRe
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
+
+import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Optional;
 @Component
@@ -49,6 +51,22 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
         Pageable pageable = PageRequest.of(page, size);
 
         return repository.findByPatientId(patientId, pageable)
+                .stream()
+                .map(mapper::toDomain)
+                .toList();
+    }
+
+    @Override
+    public List<Appointment> findByPatientId(Long patientId) {
+        return repository.findByPatientId(patientId)
+                .stream()
+                .map(mapper::toDomain)
+                .toList();
+    }
+
+    @Override
+    public List<Appointment> findFutureAppointments(Long patientId, OffsetDateTime now) {
+        return repository.findByPatientIdAndDateAfter(patientId, OffsetDateTime.now())
                 .stream()
                 .map(mapper::toDomain)
                 .toList();
