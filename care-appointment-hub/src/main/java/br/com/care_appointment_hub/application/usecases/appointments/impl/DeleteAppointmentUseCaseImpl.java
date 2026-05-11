@@ -19,7 +19,7 @@ public class DeleteAppointmentUseCaseImpl implements DeleteAppointmentUseCase {
     @Override
     public void execute(Long id) throws BusinessRuleException {
         Appointment appointment = repository.findById(id)
-                .orElseThrow(() -> new BusinessRuleException("Consulta não encontrada"));
+                .orElseThrow(() -> new BusinessRuleException("Appointment not found"));
 
         appointment.setStatus(AppointmentStatus.CANCELED);
 

@@ -26,7 +26,7 @@ public class UpdateAppointmentUseCaseImpl implements UpdateAppointmentUseCase {
     @Override
     public AppointmentResponseDTO execute(Long id, UpdateAppointmentRequestDTO request) throws BusinessRuleException {
         Appointment appointment = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Consulta não encontrada"));
+                .orElseThrow(() -> new RuntimeException("Appointment not found"));
 
         if (request.date() != null){
             appointment.reschedule(request.date());
