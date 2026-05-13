@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/appointments")
+@RequestMapping("/api/v1/appointments")
 public class AppointmentController {
     private final CreateAppointmentUseCase createUseCase;
     private final UpdateAppointmentUseCase updateUseCase;
