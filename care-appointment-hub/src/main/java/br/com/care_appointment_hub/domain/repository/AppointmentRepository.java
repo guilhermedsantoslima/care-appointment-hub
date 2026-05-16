@@ -14,4 +14,5 @@ public interface AppointmentRepository {
     List<Appointment> findByPatientId(Long patientId);
     List<Appointment> findFutureAppointments(Long patientId, OffsetDateTime now);
     List<Appointment> findFutureAppointmentsByPatientId(Long patientId);
+    Boolean existsByDoctorIdAndDate(Long doctorId, OffsetDateTime date);
 }

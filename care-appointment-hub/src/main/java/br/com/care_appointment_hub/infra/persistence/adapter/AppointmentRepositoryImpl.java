@@ -79,4 +79,9 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
                 .map(mapper::toDomain)
                 .toList();
     }
+
+    @Override
+    public Boolean existsByDoctorIdAndDate(Long doctorId, OffsetDateTime date) {
+        return repository.existsByDoctorIdAndDate(doctorId, date);
+    }
 }

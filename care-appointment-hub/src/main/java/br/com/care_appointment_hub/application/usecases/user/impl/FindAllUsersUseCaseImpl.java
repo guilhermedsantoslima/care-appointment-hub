@@ -6,11 +6,11 @@ import br.com.care_appointment_hub.domain.repository.UserRepository;
 
 import java.util.List;
 
-public class FindAllUserUseCaseImpl implements FindAllUserUseCase {
+public class FindAllUsersUseCaseImpl implements FindAllUserUseCase {
 
     private final UserRepository repository;
 
-    public FindAllUserUseCaseImpl(UserRepository repository) {
+    public FindAllUsersUseCaseImpl(UserRepository repository) {
         this.repository = repository;
     }
 

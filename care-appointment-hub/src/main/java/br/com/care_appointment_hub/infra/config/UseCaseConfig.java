@@ -16,7 +16,7 @@ public class UseCaseConfig {
 
     @Bean
     public FindAllUserUseCase findAllUsersUseCase(UserRepository repository) {
-        return new FindAllUserUseCaseImpl(repository);
+        return new FindAllUsersUseCaseImpl(repository);
     }
 
     @Bean

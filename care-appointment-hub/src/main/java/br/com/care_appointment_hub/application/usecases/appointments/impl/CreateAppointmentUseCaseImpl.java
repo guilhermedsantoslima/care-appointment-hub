@@ -36,6 +36,8 @@ public class CreateAppointmentUseCaseImpl implements CreateAppointmentUseCase {
         validateDoctor(request.doctorId());
         validatePatient(request.patientId());
         validateAppointmentDate(request);
+        validateDoctorAvailability(request.doctorId(), request.date());
+
 
         Appointment appointment = mapper.toDomain(request);
         Appointment saved = repository.save(appointment);
@@ -67,6 +69,14 @@ public class CreateAppointmentUseCaseImpl implements CreateAppointmentUseCase {
     private void validateAppointmentDate(CreateAppointmentRequestDTO request) throws BusinessRuleException {
         if (request.date().isBefore(OffsetDateTime.now())){
             throw new BusinessRuleException("Appointment cannot be in the past");
+        }
+    }
+
+    private void validateDoctorAvailability(Long doctorId, OffsetDateTime date) throws BusinessRuleException{
+        boolean exists = repository.existsByDoctorIdAndDate(doctorId, date);
+
+        if (exists){
+            throw new BusinessRuleException("Doctor already has an appointment at this date and time");
         }
     }
 }

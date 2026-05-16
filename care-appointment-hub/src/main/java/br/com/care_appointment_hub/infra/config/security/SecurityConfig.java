@@ -31,50 +31,50 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                "/auth/**",
+                                "/api/v1/auth/**",
                                 "/v3/api-docs/**",
                                  "/swagger-ui/**",
                                 "/swagger-ui.html"
                         ).permitAll()
 
                         // 👑 ADMIN - gerenciamento de usuários
-                        .requestMatchers(HttpMethod.POST, "/users/admin")
+                        .requestMatchers(HttpMethod.POST, "/api/v1/users/admin")
                         .permitAll()
 
-                        .requestMatchers(HttpMethod.POST, "/users/doctor")
+                        .requestMatchers(HttpMethod.POST, "/api/v1/users/doctor")
                         .hasRole("ADMIN")
 
                         // 👨‍⚕️ ADMIN e DOCTOR podem criar enfermeiros
-                        .requestMatchers(HttpMethod.POST, "/users/nurse")
+                        .requestMatchers(HttpMethod.POST, "/api/v1/users/nurse")
                         .hasAnyRole("ADMIN", "DOCTOR")
 
                         // 👨‍⚕️🩺 todos da área médica podem criar pacientes
-                        .requestMatchers(HttpMethod.POST, "/users/patient")
+                        .requestMatchers(HttpMethod.POST, "/api/v1/users/patient")
                         .hasAnyRole("ADMIN", "DOCTOR", "NURSE")
 
                         // 👀 listar usuários
-                        .requestMatchers(HttpMethod.GET, "/users/**")
+                        .requestMatchers(HttpMethod.GET, "/api/v1/users/**")
                         .hasAnyRole("ADMIN", "DOCTOR")
 
                         // ✏️ atualização → só ADMIN
-                        .requestMatchers(HttpMethod.PUT, "/users/**")
+                        .requestMatchers(HttpMethod.PUT, "/api/v1/users/**")
                         .hasRole("ADMIN")
 
                         // ❌ delete → só ADMIN
-                        .requestMatchers(HttpMethod.DELETE, "/users/**")
+                        .requestMatchers(HttpMethod.DELETE, "/api/v1/users/**")
                         .hasRole("ADMIN")
 
                         // 📅 consultas
-                        .requestMatchers(HttpMethod.POST, "/appointments")
+                        .requestMatchers(HttpMethod.POST, "/api/v1/appointments")
                         .hasAnyRole("ADMIN", "DOCTOR", "NURSE")
 
-                        .requestMatchers(HttpMethod.PUT, "/appointments/**")
+                        .requestMatchers(HttpMethod.PUT, "/api/v1/appointments/**")
                         .hasAnyRole("ADMIN", "DOCTOR")
 
-                        .requestMatchers(HttpMethod.DELETE, "/appointments/**")
+                        .requestMatchers(HttpMethod.DELETE, "/api/v1/appointments/**")
                         .hasAnyRole("ADMIN", "DOCTOR")
 
-                        .requestMatchers(HttpMethod.GET, "/appointments/**")
+                        .requestMatchers(HttpMethod.GET, "/api/v1/appointments/**")
                         .hasAnyRole("ADMIN", "DOCTOR", "NURSE", "PATIENT")
 
                         .anyRequest().authenticated()
