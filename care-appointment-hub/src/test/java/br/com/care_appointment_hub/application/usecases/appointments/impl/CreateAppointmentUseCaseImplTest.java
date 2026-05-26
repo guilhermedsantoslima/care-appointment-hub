@@ -67,8 +67,7 @@ class CreateAppointmentUseCaseImplTest {
                 patientId,
                 doctorId,
                 date,
-                "Consulta inicial",
-                AppointmentStatus.SCHEDULED
+                "Consulta inicial"
         );
 
         Appointment appointment = new Appointment();
@@ -119,8 +118,7 @@ class CreateAppointmentUseCaseImplTest {
                 patientId,
                 doctorId,
                 OffsetDateTime.now().plusDays(1),
-                "Consulta",
-                AppointmentStatus.SCHEDULED
+                "Consulta"
         );
 
         when(userRepository.findById(doctorId)).thenReturn(Optional.empty());
@@ -153,8 +151,7 @@ class CreateAppointmentUseCaseImplTest {
                 patientId,
                 doctorId,
                 OffsetDateTime.now().plusDays(1),
-                "Consulta",
-                AppointmentStatus.SCHEDULED
+                "Consulta"
         );
 
         when(userRepository.findById(doctorId)).thenReturn(Optional.of(patient));
@@ -187,8 +184,7 @@ class CreateAppointmentUseCaseImplTest {
                 patientId,
                 doctorId,
                 OffsetDateTime.now().plusDays(1),
-                "Consulta",
-                AppointmentStatus.SCHEDULED
+                "Consulta"
         );
 
         when(userRepository.findById(doctorId)).thenReturn(Optional.of(doctor));
@@ -230,8 +226,7 @@ class CreateAppointmentUseCaseImplTest {
                 patientId,
                 doctorId,
                 OffsetDateTime.now().minusDays(1),
-                "Consulta",
-                AppointmentStatus.SCHEDULED
+                "Consulta"
         );
 
         when(userRepository.findById(doctorId)).thenReturn(Optional.of(doctor));
@@ -261,8 +256,7 @@ class CreateAppointmentUseCaseImplTest {
                         patientId,
                         doctorId,
                         date,
-                        "Appointment",
-                        AppointmentStatus.SCHEDULED
+                        "Appointment"
                 );
 
         User patient = new User(

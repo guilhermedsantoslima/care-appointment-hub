@@ -5,6 +5,7 @@ import br.com.care_appointment_hub.application.dto.CreateAppointmentRequestDTO;
 import br.com.care_appointment_hub.application.mapper.AppointmentMapper;
 import br.com.care_appointment_hub.application.port.output.AppointmentEventPublisherPort;
 import br.com.care_appointment_hub.application.usecases.appointments.CreateAppointmentUseCase;
+import br.com.care_appointment_hub.domain.enums.AppointmentStatus;
 import br.com.care_appointment_hub.domain.enums.Role;
 import br.com.care_appointment_hub.domain.exception.BusinessRuleException;
 import br.com.care_appointment_hub.domain.model.Appointment;
@@ -40,6 +41,7 @@ public class CreateAppointmentUseCaseImpl implements CreateAppointmentUseCase {
 
 
         Appointment appointment = mapper.toDomain(request);
+        appointment.setStatus(AppointmentStatus.SCHEDULED);
         Appointment saved = repository.save(appointment);
 
         eventPublisher.publishCreatedEvent(saved);

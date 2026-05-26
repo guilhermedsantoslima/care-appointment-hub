@@ -8,6 +8,5 @@ import java.time.OffsetDateTime;
 public record CreateAppointmentRequestDTO(Long patientId,
                                           Long doctorId,
                                           OffsetDateTime date,
-                                          String description,
-                                          AppointmentStatus status) {
+                                          String description) {
 }
